@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Capri — Side Pilot",
+  "description": "A local AI browser side-pilot that explains and analyzes the page you're viewing.",
+  "version": "0.3.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://127.0.0.1:8787/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Open Capri Side Pilot"
+  }
+}

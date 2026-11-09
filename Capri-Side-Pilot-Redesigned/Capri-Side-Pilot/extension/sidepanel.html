@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101815" />
+  <title>Capri — Side Pilot</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body data-mode="coach">
+  <header class="app-header">
+    <div class="brand-row">
+      <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="brand-copy"><h1>capri<span>.</span></h1><p>YOUR LOCAL SIDE PILOT</p></div>
+      <div class="header-actions">
+        <button id="history-toggle" class="icon-btn" title="Recent conversations" aria-label="Recent conversations">◷</button>
+        <button id="settings-toggle" class="icon-btn" title="Settings" aria-label="Settings">⚙</button>
+      </div>
+    </div>
+    <div class="connection-row">
+      <span class="connection-dot"></span><span id="status" class="status">Checking local connection…</span>
+      <span class="local-pill">LOCAL AI</span>
+    </div>
+    <div class="mode-switch" role="tablist" aria-label="Assistant mode">
+      <button id="mode-coach" role="tab" aria-selected="true" class="mode active"><span class="mode-icon">✳</span> Coach</button>
+      <button id="mode-answer" role="tab" aria-selected="false" class="mode"><span class="mode-icon">⌁</span> Answer</button>
+    </div>
+    <p id="mode-hint" class="mode-hint">Guides you through the page and explains the next step.</p>
+  </header>
+
+  <aside id="history-panel" class="side-drawer" hidden>
+    <div class="drawer-heading"><div><strong>Recent chats</strong><small>Stored on this browser</small></div><button class="icon-btn close-drawer" data-close="history-panel" aria-label="Close history">×</button></div>
+    <div id="history-list" class="history-list"><p class="drawer-empty">Your recent conversations will appear here.</p></div>
+    <button id="new-chat" class="drawer-action">＋ New conversation</button>
+  </aside>
+
+  <aside id="settings-panel" class="side-drawer" hidden>
+    <div class="drawer-heading"><div><strong>Settings</strong><small>Capri runs on your computer</small></div><button class="icon-btn close-drawer" data-close="settings-panel" aria-label="Close settings">×</button></div>
+    <div class="setting-card">
+      <span class="setting-label">AI provider</span><strong>Ollama · Local</strong><small>Your page context stays on this computer and is sent to your local Ollama service.</small>
+    </div>
+    <div class="setting-card">
+      <span class="setting-label">Text model</span><strong id="settings-text-model">Checking…</strong>
+    </div>
+    <div class="setting-card">
+      <span class="setting-label">Vision model</span><strong id="settings-vision-model">Checking…</strong>
+      <label class="check-setting"><input type="checkbox" id="shot" disabled /> Include a screenshot when asking</label>
+      <small id="shot-hint">Optional visual understanding requires the vision model.</small>
+    </div>
+    <p class="privacy-note">Capri currently explains and advises. It does not click, submit forms, or make purchases.</p>
+  </aside>
+
+  <main id="messages" aria-live="polite">
+    <section class="welcome" id="empty">
+      <div class="welcome-orb"><div class="orb-core"></div><i></i></div>
+      <span class="eyebrow">READY WHEN YOU ARE</span>
+      <h2>What are we<br/><em>working on?</em></h2>
+      <p>I'll look at the page you're on and help you figure out the next step.</p>
+      <button id="welcome-scan" class="welcome-action">✳ &nbsp; Scan this page</button>
+      <span class="welcome-footnote">Your assistant. Your machine. Your control.</span>
+    </section>
+  </main>
+
+  <footer class="composer-area">
+    <div class="context-bar"><span class="context-icon">◎</span><span>Current tab context</span><span class="context-state">READY TO READ</span></div>
+    <div class="composer">
+      <textarea id="input" rows="2" placeholder="Message Capri…" aria-label="Message Capri"></textarea>
+      <button id="send" aria-label="Send message" title="Send message">↑</button>
+    </div>
+    <div class="composer-bottom">
+      <button id="scan" class="scan-btn">✳ Scan page</button>
+      <span class="keyboard-hint">Enter to send · Shift + Enter for new line</span>
+      <button id="clear" class="text-btn">Clear</button>
+    </div>
+    <div class="footer-brand"><span>CAPRI SIDE PILOT</span><span>POWERED BY YOUR LOCAL MODEL</span></div>
+  </footer>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
